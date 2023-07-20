@@ -1,0 +1,15 @@
+<div class="section-1">
+    <div class="container">
+        <div class="section-1-main">
+            <button mat-raised-button color="accent" (click)="openEditControllerDialog()">Add New Role</button>
+            <h1 class="title">Role Name :</h1>
+            <div class="roles" *ngFor = "let item of allRoles.data" >
+                <h1>{{item.name}}</h1>
+                <div class="buttons">
+                    <button mat-raised-button color="primary" (click)="openEditControllerDialog(item)">Edit</button>
+                <button mat-raised-button color="warn"(click)="deleteUser(item._id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

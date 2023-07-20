@@ -1,0 +1,24 @@
+<div class="section-1">
+    <div class="container">
+        <div class="section-1-main">
+            <ul *ngFor="let data of allUser.data">
+                <li>UserName: {{data?.username}}</li>
+                <li>Email: {{data?.email}}</li>
+                <ul *ngFor="let data of data.roles">
+                    <li>Role : {{data?.name}}</li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<h2>Input Dynamic </h2>
+<input #newHero
+      (keyup.enter)="addHero(newHero.value)"
+      (blur)="addHero(newHero.value); newHero.value='' ">
+
+    <button type="button" (click)="addHero(newHero.value)">Add</button>
+
+    <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>

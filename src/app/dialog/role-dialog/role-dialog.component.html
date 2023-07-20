@@ -1,0 +1,35 @@
+<div class="dialog-container">
+    <div class="close">
+      <button mat-icon-button type="button" (click)="onClose()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <div class="top-input-header">
+      <div class="title">
+        <h2> {{ roledata ? "Edit Role Name" : "Add Role Name" }}</h2>
+      </div>
+    </div>
+  
+    <form
+      #formElement="ngForm"
+      [formGroup]="dataForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+    >
+      <mat-form-field appearance="outline" class="w-100 px-1">
+        <mat-label>User Name</mat-label>
+        <textarea
+          formControlName="name"
+          matInput
+          placeholder="Enter role name"
+          [rows]="1"
+        ></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">
+        {{ roledata ? "Update" : "Add" }}
+      </button>
+    </form>
+  </div>
+  
