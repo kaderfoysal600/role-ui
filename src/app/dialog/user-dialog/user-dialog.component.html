@@ -1,0 +1,48 @@
+<div class="dialog-container">
+    <div class="close">
+      <button mat-icon-button type="button" (click)="onClose()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  
+    <div class="top-input-header">
+      <div class="title">
+        <h2> {{ userdata ? "Edit User" : "Add User" }}</h2>
+      </div>
+    </div>
+  
+    <form
+      #formElement="ngForm"
+      [formGroup]="dataForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+    >
+      <mat-form-field *ngIf="!userdata"  appearance="outline" class="w-100 px-1">
+        <mat-label>User Name</mat-label>
+        <input matInput  formControlName="username"  placeholder="Enter User name">
+      </mat-form-field>
+      <mat-form-field  *ngIf="!userdata"  appearance="outline" class="w-100 px-1">
+        <mat-label>Email</mat-label>
+         <input matInput  formControlName="email"  placeholder="Enter email"> 
+      </mat-form-field>
+  
+      
+      <mat-form-field *ngIf="!userdata" appearance="outline" class="w-100 px-1">
+        <mat-label>Password</mat-label>
+        <input matInput  formControlName="password"  placeholder="Enter password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="roles" multiple>
+          <mat-option *ngFor="let role of allRoles?.data" [value]="role?.name">{{role?.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+  
+      <button mat-raised-button color="primary" type="submit"   placeholder="Enter role name">
+        {{ userdata ? "Update" : "Add" }}
+      </button>
+    </form>
+  </div>
+  

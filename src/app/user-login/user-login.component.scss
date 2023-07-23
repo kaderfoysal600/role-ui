@@ -1,0 +1,10 @@
+.container{
+    max-width: 350px;
+    margin: 40px auto 0px;
+}
+
+.login-form{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    
+}

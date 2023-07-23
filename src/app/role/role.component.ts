@@ -39,7 +39,7 @@ private subDataTwo: Subscription;
       next: (res) => {
         console.log(res);
         if (res) {
-          location.reload();
+          this.getAllRole()
         }
       },
       error: (err) => {
@@ -72,7 +72,7 @@ private subDataTwo: Subscription;
       next: (res) => {
         console.log(res);
         if (res) {
-          location.reload();
+          this.getAllRole()
         }
       },
       error: (err) => {
@@ -89,6 +89,7 @@ private subDataTwo: Subscription;
             // this.reloadService.needRefreshData$();
             // this.uiService.success('Review added successfully.')
             console.log('role added successfully')
+            this.getAllRole()
           } else {
             // this.uiService.wrong('Error! Please try again.')
             console.log('role added successfully')

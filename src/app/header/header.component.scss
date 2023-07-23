@@ -1,0 +1,12 @@
+.section-1-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+}
+
+.active{
+    background-color: rgb(160, 45, 45);
+    color:#FFFF
+}

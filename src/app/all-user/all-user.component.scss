@@ -1,7 +1,20 @@
 .section-1-main{
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
+    grid-template-columns: repeat(3,1fr);
     gap: 20px;
     font-size: 16px;
+    ul{
+        list-style: none;
+    }
+    .first{
+        border: 1px solid yellowgreen;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
+.container{
+    max-width: 1250px;
+    margin: auto;
 }

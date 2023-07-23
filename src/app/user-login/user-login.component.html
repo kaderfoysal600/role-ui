@@ -1,0 +1,28 @@
+
+
+<div class="container">
+  <h1>Login Here</h1>
+
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <mat-form-field class="mat-data-input-field" appearance="outline">
+    <mat-label>Username</mat-label>
+    <input type="text" formControlName="username" matInput placeholder="Enter your username...">
+    <mat-icon matSuffix>person</mat-icon>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="mat-data-input-field" appearance="outline">
+    <mat-label>Password</mat-label>
+    <input formControlName="password" type="password" matInput placeholder="Enter your password...">
+    <mat-icon matSuffix>lock</mat-icon>
+    <mat-error>This field is required</mat-error>
+  </mat-form-field>
+
+  <div class="submit-area">
+    <button class="btn-login" mat-raised-button color="primary" type="submit">Login</button>
+  </div>
+
+</form>
+</div>
+
+

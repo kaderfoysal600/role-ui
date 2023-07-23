@@ -10,13 +10,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllUserComponent } from './all-user/all-user.component';
+import { HeaderComponent } from './header/header.component';
+import { UserDialogComponent } from './dialog/user-dialog/user-dialog.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoleComponent,
     RoleDialogComponent,
-    AllUserComponent
+    AllUserComponent,
+    HeaderComponent,
+    UserDialogComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
