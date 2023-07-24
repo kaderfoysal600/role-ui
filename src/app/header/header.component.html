@@ -4,7 +4,8 @@
         <div class="section-1-main">
             <button mat-stroked-button color="primary" routerLink="/all-role" routerLinkActive="active">All Role</button>
             <button mat-stroked-button routerLink="/all-user" routerLinkActive="active">All User</button>
-            <button mat-stroked-button routerLink="/login" routerLinkActive="active">Login</button>
+            <button mat-stroked-button routerLink="/login" routerLinkActive="active" *ngIf="!loggedin">Login</button>
+            <button mat-stroked-button  routerLinkActive="active" *ngIf="loggedin" (click)="logOut()">Logout</button>
         </div>
     </div>
 </div>

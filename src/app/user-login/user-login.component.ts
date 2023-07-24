@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -12,8 +13,7 @@ export class UserLoginComponent implements OnInit {
   loginForm: FormGroup;
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
-  constructor(private userService :UserService) { }
-
+  constructor(private userService :UserService, public router: Router) { }
   ngOnInit(): void {
         // Main reactive form..
         this.loginForm = new FormGroup({
@@ -41,8 +41,11 @@ export class UserLoginComponent implements OnInit {
   
       this.userService.loginUser(data).subscribe({
         next: (res) => {
-          if (res) {
+          if (res && res['status']=="ok" && res['data']['accessToken'] ) {
+            console.log(res)
             console.log('login successfully')
+             localStorage.setItem('token', res['data']['accessToken']);
+               this.router.navigate(['/profile']);
           } else {
             console.log('Error! Please try again.')
           }

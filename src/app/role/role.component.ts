@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { RoleDialogComponent } from '../dialog/role-dialog/role-dialog.component';
 import { RoleServicesService } from '../services/role-services.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-role',
@@ -11,12 +12,13 @@ import { RoleServicesService } from '../services/role-services.service';
 })
 export class RoleComponent implements OnInit {
 public allRoles:any = []
-
+public checkadmin: boolean = false;
 
 private subDataTwo: Subscription;
   constructor(
     public roleService: RoleServicesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public userService: UserService
     ) { }
 
   ngOnInit(): void {
@@ -99,5 +101,23 @@ private subDataTwo: Subscription;
           console.log(err)
         }
       })
+  }
+
+
+  public loggedinUserRole(){
+    this.userService.getLoggedinUser(localStorage.getItem('token')).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if(res.data.length === 0){
+          this.checkadmin = false;
+        }
+    if(res.data.roles.includes('ADMIN')){
+      this.checkadmin = true
+    }
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 }

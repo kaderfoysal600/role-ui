@@ -13,6 +13,7 @@ import { AllUserComponent } from './all-user/all-user.component';
 import { HeaderComponent } from './header/header.component';
 import { UserDialogComponent } from './dialog/user-dialog/user-dialog.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
     AllUserComponent,
     HeaderComponent,
     UserDialogComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

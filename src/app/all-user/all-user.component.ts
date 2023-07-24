@@ -11,12 +11,14 @@ import { UserService } from '../services/user.service';
 })
 export class AllUserComponent implements OnInit {
   public allUser:any = []
+  public checkadmin: boolean = false;
  public heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
  private subDataTwo: Subscription;
   constructor(public userService: UserService,    private dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.getAllUser()
+   
   }
   getAllUser(){
     this.userService.getAllUser().subscribe({
@@ -26,6 +28,7 @@ export class AllUserComponent implements OnInit {
           this.allUser = [];
         }
         this.allUser = res;
+        this.loggedinUserRole()
       },
       error: (error: any) => {
         console.log(error);
@@ -51,8 +54,6 @@ export class AllUserComponent implements OnInit {
       }
     });
   }
-
-
   addUser(data: any) {
     this.subDataTwo = this.userService.addUser(data)
       .subscribe({
@@ -72,7 +73,6 @@ export class AllUserComponent implements OnInit {
         }
       })
   }
-
   public deleteUser(id: string) {
     this.userService.deleteUserById(id).subscribe({
       next: (res) => {
@@ -86,7 +86,6 @@ export class AllUserComponent implements OnInit {
       },
     })
   }
-
   public updateUserRoleById(id: string, data: any) {
     this.userService.updateUserById(id, data).subscribe({
       next: (res) => {
@@ -103,8 +102,24 @@ export class AllUserComponent implements OnInit {
       },
     });
   }
+  public loggedinUserRole(){
+    this.userService.getLoggedinUser(localStorage.getItem('token')).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if(res.data.length === 0){
+          this.checkadmin = false;
+        }
+    if(res.data.roles.includes('ADMIN')){
+      this.checkadmin = true
+    }
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+  }
 
-
+//demo
   addHero(newHero: string) {
     if (newHero) {
       this.heroes.push(newHero);

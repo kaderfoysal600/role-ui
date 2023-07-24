@@ -1,6 +1,6 @@
 <div class="section-1">
     <div class="container">
-        <button mat-raised-button color="accent" (click)="openUserControllerDialog()">Add New User</button>
+        <button mat-raised-button color="accent" *ngIf="checkadmin"  (click)="openUserControllerDialog()">Add New User</button>
         <div class="section-1-main">
           
             <ul class="first" *ngFor="let data of allUser.data">
@@ -9,8 +9,8 @@
                 <ul *ngFor="let data of data.roles">
                     <li>Role : {{data?.name}}</li>
                 </ul>
-                <button mat-raised-button color="primary" (click)="openUserControllerDialog(data)">Edit</button>
-                <button mat-raised-button color="warn"(click)="deleteUser(data._id)">Delete</button>
+                <button mat-raised-button color="primary" *ngIf="checkadmin" (click)="openUserControllerDialog(data)">Edit</button>
+                <button mat-raised-button color="warn" *ngIf="checkadmin" (click)="deleteUser(data._id)">Delete</button>
             </ul>
         </div>
     </div>
