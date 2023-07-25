@@ -1,26 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { DataSharingService } from '../services/DataSharingService.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-loggedin = false;
-  constructor( public router: Router) {
-    if(localStorage.getItem('token')){
-      this.loggedin = true
-    }
+  // Define a variable to use for showing/hiding the Login button
+  isUserLoggedIn: boolean;
+  constructor( public router: Router, private dataSharingService: DataSharingService) {
+    this.dataSharingService.isUserLoggedIn.subscribe( value => {
+            this.isUserLoggedIn = value;
+
+  });
    }
 
   ngOnInit(): void {
+
   }
 
   logOut() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
-    this.loggedin = false
+    this.dataSharingService.setUserLoggedInStatus(false);
   }
 
 }

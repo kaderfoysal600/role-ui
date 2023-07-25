@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserDialogComponent } from './dialog/user-dialog/user-dialog.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DataSharingService } from './services/DataSharingService.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
 public loginUser=null;
-  constructor( public userService: UserService) { }
+  constructor( public userService: UserService, public router: Router) { }
 
   ngOnInit(): void {
     this.getLoggedinUser()
@@ -31,5 +31,10 @@ public loginUser=null;
       });
     }
 
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

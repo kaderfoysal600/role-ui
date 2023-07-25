@@ -15,7 +15,9 @@ export class UserService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get('http://localhost:8080/api/auth/getSigninUser', { withCredentials: true });
+    return this.http.get('http://localhost:8080/api/auth/getSigninUser', {
+      headers: headers,
+    });
   }
   addUser(data:any){
     return this.http.post('http://localhost:8080/api/auth/signup', data)

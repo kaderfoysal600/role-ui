@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataSharingService } from '../services/DataSharingService.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class UserLoginComponent implements OnInit {
   loginForm: FormGroup;
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
-  constructor(private userService :UserService, public router: Router) { }
+  constructor(private userService :UserService, public router: Router, private dataSharingService: DataSharingService) { }
   ngOnInit(): void {
         // Main reactive form..
         this.loginForm = new FormGroup({
@@ -46,6 +47,8 @@ export class UserLoginComponent implements OnInit {
             console.log('login successfully')
              localStorage.setItem('token', res['data']['accessToken']);
                this.router.navigate(['/profile']);
+                this.dataSharingService.setUserLoggedInStatus(true)
+               
           } else {
             console.log('Error! Please try again.')
           }

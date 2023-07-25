@@ -29,6 +29,7 @@ private subDataTwo: Subscription;
       next: (res: any) => {
         console.log(res);
         this.allRoles = res;
+        this.loggedinUserRole()
       },
       error: (error: any) => {
         console.log(error);
@@ -111,8 +112,11 @@ private subDataTwo: Subscription;
         if(res.data.length === 0){
           this.checkadmin = false;
         }
+        console.log(res.data.roles);
     if(res.data.roles.includes('ADMIN')){
       this.checkadmin = true
+      console.log(res.data.roles);
+      
     }
       },
       error: (error: any) => {
